@@ -13,19 +13,17 @@ const cwd = fs.realpathSync(process.cwd());
 
 const resolvePathFromCwd = relativePath => {
   if (process.env.NODE_PATH) {
-    const node_path_parts = process.env.NODE_PATH.split(
-      _path.default.delimiter,
-    );
+    const node_path_parts = process.env.NODE_PATH.split(path.delimiter);
     const matchingPath = node_path_parts.find(node_path_part => {
-      const pathToFile = _path.default.resolve(node_path_part, relativePath);
-      return _fs.default.existsSync(pathToFile);
+      const pathToFile = path.resolve(node_path_part, relativePath);
+      return fs.existsSync(pathToFile);
     });
     if (matchingPath) {
-      return _path.default.resolve(matchingPath, relativePath);
+      return path.resolve(matchingPath, relativePath);
     }
   }
 
-  return _path.default.resolve(cwd, '.', relativePath);
+  return path.resolve(cwd, '.', relativePath);
 };
 
 function graphqlMacro({
