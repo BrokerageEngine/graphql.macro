@@ -10,7 +10,7 @@
     "clean": "rm -rf lib",
     "prebuild": "npm run clean",
     "build":
-      "NODE_ENV=production babel src --out-dir lib --ignore '**/*.test.js'",
+      "NODE_ENV=production babel src --out-dir dist --ignore '**/*.test.js'",
     "test": "jest --coverage --runInBand",
     "test:watch": "npm run test -- --watch",
     "eslint": "eslint ./",
